@@ -1,7 +1,7 @@
 import React from 'react'
-//import ImageGroup from "./ImageGroup"
+import ImageGroup from "./ImageGroup"
 import { Container, Header } from 'semantic-ui-react'
-//import ImageCarousel from "./ImageCarousel"
+import ImageCarousel from "./ImageCarousel"
 
 function ParkInformation({ park }) {
     console.log(park)
@@ -9,7 +9,7 @@ function ParkInformation({ park }) {
         <div>
             <Container text style={{ marginTop: '7em' }}>
                 <Header as='h2' style={{ marginTop: '5em',marginBottom: '1em'}}> {park.fullName}</Header>
-                {/* <ImageGroup images={park.images} /> */}
+                <ImageGroup images={park.images} /> 
                 <p>{park.description}</p>
                 <p>{park.directionsInfo}</p>
             </Container>

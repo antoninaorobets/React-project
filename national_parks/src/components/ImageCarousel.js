@@ -11,16 +11,16 @@
 // </Slide>)
 
 //   return(
-//     <div>!</div>
 
-//   // <CarouselProvider
-//   //   naturalSlideWidth={1}
-//   //   naturalSlideHeight={1}
-//   //   totalSlides={images.length}
-//   // >
-//   //   <Slider>
-//   //     {slides}
-//   //   </Slider>
+
+//   <CarouselProvider
+//     naturalSlideWidth={1}
+//     naturalSlideHeight={1}
+//     totalSlides={images.length}
+//   >
+//     <Slider>
+//       {slides}
+//     </Slider>
 
 //   //   <Divider />
 //   //   <CustomDotGroup slides={images.length} />
