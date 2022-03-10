@@ -8,7 +8,7 @@ function ParkCard({ park }) {
     };
     return (
         <Card>
-            <Image src={park.images[0].url}  ui={false} style={{"height": "200px"}} />
+            <Image src={park.images[0].url}  ui={false} style={{"height": "200px", "object-fit": "cover"}} />
             <Card.Content>
                 <Card.Header>{park.name}</Card.Header>
                 <Card.Meta>

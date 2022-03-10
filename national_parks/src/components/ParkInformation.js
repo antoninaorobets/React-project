@@ -1,14 +1,17 @@
 import React from 'react'
 import ImageGroup from "./ImageGroup"
 import { Container, Header,Segment,Divider } from 'semantic-ui-react'
-import ImageCarousel from "./ImageCarousel"
+import ImgCarousel from "./ImgCarousel"
 
 function ParkInformation({ park }) {
     console.log(park)
     return (
         <div>
             <Header as='h2' style={{ marginTop: '5em', marginBottom: '1em' }}> {park.fullName}</Header>
-            <ImageGroup images={park.images} />
+            <Container >
+            <ImgCarousel images={park.images}/>
+            </Container>
+    
             <Container text style={{ marginTop: '2em' }}>
                 <p>{park.description}</p>
                 <Divider inverted section />
@@ -27,8 +30,8 @@ function ParkInformation({ park }) {
                     </p>
                 </Segment>
             </Container>
-            {/* <ImageCarousel images={park.images}/> */}
             
+           <a href={park.url} target="_blank" rel="noreferrer noopener" > Visit Park web site </a>
         </div>
     )
 }
