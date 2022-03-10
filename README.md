@@ -12,3 +12,15 @@ As User I can filter parks by state
 As User I can marked parks I have visited
 
 
+UI:
+https://react.semantic-ui.com/usage/
+
+US state code list:
+https://gist.github.com/mshafrir/2646763
+
+API
+https://rapidapi.com/jonahtaylor/api/national-park-service
+
+
+FixedMenuLayout
+https://github.com/Semantic-Org/Semantic-UI-React/blob/master/docs/src/layouts/FixedMenuLayout.js
