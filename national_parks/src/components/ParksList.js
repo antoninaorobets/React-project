@@ -25,8 +25,8 @@ function ParksList() {
         </Item.Group>
       
         <Divider inverted section /> */}
-
-        <Card.Group floated >
+  
+        <Card.Group floated style={{"margin": "auto"}} >
           {display_parks_Cards}
         </Card.Group>
 
