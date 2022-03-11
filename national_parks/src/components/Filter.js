@@ -20,18 +20,8 @@ export default class MenuExampleVerticalSecondary extends Component {
     return (
       <Menu pointing secondary vertical>
         <Menu.Item
-          name='home'
-          active={activeItem === 'home'}
-          onClick={this.handleItemClick}
-        />
-        <Menu.Item
-          name='messages'
-          active={activeItem === 'messages'}
-          onClick={this.handleItemClick}
-        />
-        <Menu.Item
-          name='friends'
-          active={activeItem === 'friends'}
+          name='All States'
+          active={activeItem === 'All States'}
           onClick={this.handleItemClick}
         />
         {statesList}
@@ -39,13 +29,3 @@ export default class MenuExampleVerticalSecondary extends Component {
     )
   }
 }
-
-// function Filter() {
-
-//     console.log(states)
-//   return (
-//     <div>Filters</div>
-//   )
-// }
-
-//export default Filter

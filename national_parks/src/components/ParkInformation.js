@@ -1,6 +1,5 @@
 import React from 'react'
-import ImageGroup from "./ImageGroup"
-import { Container, Header,Segment,Divider } from 'semantic-ui-react'
+import { Container, Header,Segment,Divider,Image } from 'semantic-ui-react'
 import ImgCarousel from "./ImgCarousel"
 
 function ParkInformation({ park }) {
@@ -30,7 +29,7 @@ function ParkInformation({ park }) {
                     </p>
                 </Segment>
             </Container>
-            
+          
            <a href={park.url} target="_blank" rel="noreferrer noopener" > Visit Park web site </a>
         </div>
     )
