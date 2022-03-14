@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, Icon, Image } from 'semantic-ui-react'
+import { Link } from "react-router-dom"
 
 
 function ParkCard({ park }) {
@@ -8,7 +9,7 @@ function ParkCard({ park }) {
     };
     return (
         <Card>
-            <Image src={park.images[0].url}  ui={false} style={{"height": "200px", "objectFit": "cover"}} />
+            <Image src={park.images[0].url} ui={false} style={{ "height": "200px", "objectFit": "cover" }} />
             <Card.Content>
                 <Card.Header>{park.name}</Card.Header>
                 <Card.Meta>
@@ -19,10 +20,7 @@ function ParkCard({ park }) {
                 </Card.Description>
             </Card.Content>
             <Card.Content extra>
-                <a>
-                    <Icon name='user' />
-                    22 Friends
-                </a>
+                <Link to={`/parks/${park.parkCode}`}> See more </Link>
             </Card.Content>
         </Card>
     )

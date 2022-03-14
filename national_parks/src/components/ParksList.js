@@ -1,35 +1,51 @@
-import React, { useEffect, useState }  from 'react'
-import parks_data from "../db_test.json"
-//import parks_data from "../db.json"
+import React, { useEffect, useState, useRef } from 'react'
 import ParkCard from "./ParkCard"
 import Filter from "./Filter"
 
 import {
-  Container,
   Divider,
   Header,
   Card,
   Grid,
+  Pagination,
 } from 'semantic-ui-react'
 
 
-function ParksList() {
-    const allParks = parks_data.parks[0].data
-    const [parks, setParks] = useState(allParks)
-    const [filterBy, setFilterBy] = useState('All States')
+function ParksList({ allParks }) {
+  const [parks, setParks] = useState([])
+  const [filterBy, setFilterBy] = useState('All States')
+  const [page, setPage] = useState(0)
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/parks/?_limit=12&_start=${page * 12}`)
+      .then(resp => resp.json())
+      .then(data => {
+        setParks([...parks,...data])
+      })
+  }, [page])
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+    if (filterBy !== 'All States') {
+        const displayParks = allParks.filter(park => park.states === filterBy)
+        setParks(displayParks)
+    }
+    else {
+      setPage(0)
+      fetch(`http://localhost:3000/parks/?_limit=12`)
+      .then(resp => resp.json())
+      .then(data => {
+        setParks(data)
+      })
+    }
+  }, [filterBy])
 
 
-useEffect (()=>{
-  if (filterBy !== 'All States') {
-    const displayParks = parks.filter(park => park.states === filterBy)
-    setParks(displayParks)
+  const parksCards = parks.map(park => <ParkCard key={park.parkCode} park={park} />)
+
+  const handleChangePage = (e) => {
+    setPage(page+1)
   }
-  else {
-    setParks(allParks)
-  }
-}, [filterBy])
-   
-  const parksCards = parks.map(park => <ParkCard key={park.id} park={park}/>)
 
   return (
     <div>
@@ -41,17 +57,20 @@ useEffect (()=>{
           </Grid.Column>
 
           <Grid.Column width={12}>
-          <Card.Group  >
-          {parksCards}
-        </Card.Group>
+            <Card.Group  >
+              {parksCards}
+            </Card.Group>
           </Grid.Column>
         </Grid.Row>
       </Grid>
 
-      <Divider inverted section />
-      {/* <ParkInformation park={parks[1]} /> */}
-    </div>
+      {filterBy === 'All States' ? <button type="pageItem" className="item" value={0} onClick={handleChangePage}>More Parks</button> : null} 
+   
+      
+    </div >
   )
 }
 
 export default ParksList
+
+

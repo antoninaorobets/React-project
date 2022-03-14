@@ -1,10 +1,5 @@
 {
   "parks": [
-    {
-      "total": "465",
-      "limit": "10",
-      "start": "0",
-      "data": [
         {
           "id": "77E0D7F0-1942-494A-ACE2-9004D2BDC59E",
           "url": "https://www.nps.gov/abli/index.htm",
@@ -2612,8 +2607,5 @@
           "name": "Alcatraz Island",
           "designation": ""
         }
-      ],
-      "id": 15
+      ]
     }
-  ]
-}

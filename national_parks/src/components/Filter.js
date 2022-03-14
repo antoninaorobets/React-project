@@ -16,6 +16,7 @@ function Filter({filterBy, setFilterBy}) {
       const selected = st.abbreviation
       return (
       <Menu.Item
+        key={selected}
         name={st.name}
         active = {filterBy === selected}
         onClick={handleItemClick}
@@ -26,6 +27,7 @@ function Filter({filterBy, setFilterBy}) {
     return (
       <Menu pointing secondary vertical>
         <Menu.Item
+          key='all'
           name='All States'
           active = {filterBy === 'All States'}
           onClick={handleItemClick}

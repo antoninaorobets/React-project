@@ -6,24 +6,23 @@ import BottomMenu from "./Bottommenu"
 import { Search } from 'semantic-ui-react'
 import useParksQuery from '../hooks/useParksQuery'
 import { Route, Routes } from "react-router-dom";
-import ParkInformation from './ParkInformation'
-import parks_data from "../db_test.json"
+import ParkDetail from './ParkDetail'
+//import parks_data from "../db_test.json"
+import parks_data from "../db.json"
 import LoginForm from "./LoginForm";
 
+
 function App() {
-
-
+  const allParks = parks_data.parks
 
   return (
     <div className="App">
       <TopMenu/>
         
       <Routes>
-        <Route exact path="/" element={<ParksList />}/>
-        <Route path="/1" element={<ParkInformation park={parks_data.parks[0].data[1]}/>}/>
+        <Route exact path="/" element={<ParksList allParks={allParks} />}/>
+        <Route path="/parks/:code" element={<ParkDetail allParks={allParks} />}/>
         <Route path="/login" element={<LoginForm/>} />
-        <Route path="*" element={<h2 style={{margin: "5em"}}>404 not found</h2> }/>
-
       </Routes>
 
       <BottomMenu />
