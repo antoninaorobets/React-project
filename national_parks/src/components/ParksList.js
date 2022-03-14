@@ -1,8 +1,9 @@
 import React, { useEffect, useState }  from 'react'
 import parks_data from "../db_test.json"
+//import parks_data from "../db.json"
 import ParkCard from "./ParkCard"
 import Filter from "./Filter"
-import ParkInformation from './ParkInformation'
+
 import {
   Container,
   Divider,
@@ -28,12 +29,7 @@ useEffect (()=>{
   }
 }, [filterBy])
    
-
-    //const displayParks = parks.filter(park => park.states === filterBy)
-
-    console.log(parks)
-    const parksCards = parks.map(park => <ParkCard key={park.id} park={park}/>)
-    
+  const parksCards = parks.map(park => <ParkCard key={park.id} park={park}/>)
 
   return (
     <div>

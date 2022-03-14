@@ -9,7 +9,7 @@ import {
 
 
 
-function TopMenu() {
+function TopMenu( {children}) {
 return (
   <div>
     <Menu fixed='top' inverted>
@@ -19,18 +19,10 @@ return (
           National Parks
         </Menu.Item>
         <Menu.Item as='a'>My Page</Menu.Item>
-          <Search 
-          position='right' 
-          style={{ 'align-items': 'center', 'display': 'flex'  }}
-            // fluid
-            // loading={isLoading}
-            // onResultSelect={this.handleResultSelect}
-            // onSearchChange={_.debounce(this.handleSearchChange, 500, {
-            //   leading: true,
-            // })}
-            // results={results}
-            // value={value}
-          />
+        <Search
+          style={{ 'alignItems': 'center', 'display': 'flex' }}
+          fluid
+        />
         <Menu.Item as='a' position='right' >Login</Menu.Item>
         
       </Container>
