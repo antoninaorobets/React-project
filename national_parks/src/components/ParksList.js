@@ -15,7 +15,7 @@ function ParksList({ allParks }) {
   const [loading, setLoading] = useState(true)
   const [filterBy, setFilterBy] = useState('All States')
   const [page, setPage] = useState(0)
-  const [hasMore, setHasMore] = useState(false)
+  const [hasMore, setHasMore] = useState(true)
 
   useEffect(() => {
     setLoading(true)
@@ -49,8 +49,9 @@ function ParksList({ allParks }) {
     if (loading) return
     if (observer.current) observer.current.disconnect()
     observer.current = new IntersectionObserver(entries =>{
+      console.log('has more?', hasMore)
       if (entries[0].isIntersecting && hasMore) {
-        console.log('next page')
+        console.log('next page', hasMore)
         setPage(page => page + 1)}
     })
     if (node) observer.current.observe(node)
