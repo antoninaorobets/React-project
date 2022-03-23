@@ -9,23 +9,25 @@ import {
 } from 'semantic-ui-react'
 
 
-function ParksList({ allParks }) {
-  const pageSize = 50
+function ParksList({ allParks,user, setUser }) {
+  const pageSize = 4
   const [parks, setParks] = useState([])
   const [loading, setLoading] = useState(true)
   const [filterBy, setFilterBy] = useState('All States')
   const [page, setPage] = useState(0)
   const [hasMore, setHasMore] = useState(true)
 
+  
   useEffect(() => {
     setLoading(true)
-    fetch(`http://localhost:3000/parks/?_limit=${pageSize}&_start=${page * pageSize}`)
+    fetch(`http://localhost:3002/parks/?_limit=${pageSize}&_start=${page * pageSize}`)
       .then(resp => resp.json())
       .then(data => {
+        console.log("data fetchd",data)
         setParks([...parks,...data])
         setLoading(false)
         setHasMore(data.length > 0)
-      })
+      }).catch(error=>console.error(error))
   }, [page])
 
   useEffect(() => {
@@ -49,31 +51,20 @@ function ParksList({ allParks }) {
     if (loading) return
     if (observer.current) observer.current.disconnect()
     observer.current = new IntersectionObserver(entries =>{
-      console.log('has more?', hasMore)
       if (entries[0].isIntersecting && hasMore) {
-        console.log('next page', hasMore)
         setPage(page => page + 1)}
     })
     if (node) observer.current.observe(node)
-      
   }, [loading])
 
   const parksCards = parks.map((park, index) => {
-    console.log("parks length",parks.length)
     if ((parks.length === (index + 1)) && (filterBy === 'All States') ) {
-      console.log(index)
-      return  <div ref={lastCardRef}> <ParkCard  key={park.id} park={park} /> </div>
+      return  <div ref={lastCardRef}> <ParkCard  key={park.id} park={park} user={user} setUser={setUser}/> </div>
     }
     else {
-      return <ParkCard key={park.id} park={park} />
+      return <ParkCard key={park.id} park={park} user={user} setUser={setUser} />
     }
-  }
-  )
-
-
-  const handleChangePage = (e) => {
-    setPage(page+1)
-  }
+  })
 
   return (
     <div>
@@ -94,8 +85,7 @@ function ParksList({ allParks }) {
       </Grid>
       <Container style={{ marginTop: '4em'}} >
       <div>{loading && 'Loading...'}</div>
-      {/* {filterBy === 'All States' ? <button type="pageItem" className="item" value={0} onClick={handleChangePage}>More Parks</button> : null}  */}
-   </Container>
+       </Container>
       
     </div >
   )

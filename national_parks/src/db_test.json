@@ -1,4 +1,26 @@
 {
+  "users": [
+    {
+      "id": "1",
+      "email": "absd@gmail.com",
+      "parkCodes": [
+        "afbg",
+        "abli",
+        "acad",
+        "alca"
+      ]
+    },
+    {
+      "id": "1",
+      "email": "xxx",
+      "parkCodes": [
+        "afbg",
+        "abli",
+        "acad",
+        "alca"
+      ]
+    }
+  ],
   "parks": [
         {
           "id": "77E0D7F0-1942-494A-ACE2-9004D2BDC59E",

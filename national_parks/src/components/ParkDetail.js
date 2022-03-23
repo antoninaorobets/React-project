@@ -6,12 +6,11 @@ import {useParams} from "react-router-dom"
 
 function ParkDetail({allParks}) {
     const {code} = useParams()
-
     useEffect(() => {
         window.scrollTo(0, 0)
       }, [])
+      
   const park = allParks.filter(park=>park.parkCode === code)[0]
-
     return (
         <div>
             <Header as='h2' style={{ marginTop: '5em', marginBottom: '1em' }}> {park.fullName}</Header>

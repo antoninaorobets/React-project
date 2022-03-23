@@ -2,15 +2,12 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import {
   Container,
-  Header,
   Image,
   Menu,
   Search,
 } from 'semantic-ui-react'
 
-
-
-function TopMenu({ children }) {
+function TopMenu({ isLoggin }) {
   return (
     <div>
       <Menu fixed='top' inverted>
@@ -21,25 +18,22 @@ function TopMenu({ children }) {
               National Parks
             </Menu.Item>
           </NavLink>
-          <Menu.Item as='a'>My Page</Menu.Item>
+          { (isLoggin)  ?  <NavLink to="/myparks" style={{ 'alignItems': 'center', 'display': 'flex' }}> <Menu.Item as='a'>My Parks</Menu.Item> </NavLink>   : null }
         </Container>
         <Search
           style={{ 'alignItems': 'center', 'display': 'flex' }}
           fluid
         />
-{/* How to fix size of click area */}
-        
+{/* How to fix size of click area */}      
         <Menu.Item as='a' position='right' display="flex" style={{ 'alignItems': 'center' }}>
-          <NavLink to="/login" style={{margin: "13px 16px"}} >
-            Login
-          </NavLink>
+          { (isLoggin) ? <div>Logout</div>:
+            <NavLink to="/login" style={{margin: "13px 16px"}} >Login</NavLink>}
         </Menu.Item>
-
-
       </Menu>
-
-
     </div>
   )
 }
 export default TopMenu
+
+
+
