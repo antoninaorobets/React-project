@@ -1,4 +1,5 @@
 import React,{ useState, useContext} from 'react'
+import { Link } from 'react-router-dom'
 import { Button, Form, Grid, Header, Image, Segment } from 'semantic-ui-react'
 
 
@@ -17,37 +18,18 @@ const handleChange = (e) => {
 }
 const handleSubmit = (e)=>{
   e.preventDefault()
-const em = loginForm.email
-const data = 
-    {
-      "email": em,
-      parkCodes: [],
-    }
-  fetch('http://localhost:3002/users', {
-      method: 'POST', 
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
+  fetch(`http://localhost:3002/users?` + new URLSearchParams({
+      email: loginForm.email,
+  }))
   .then(response => response.json())
-  .then(data => {
-    console.log("fetch",data)
-    setUser(data)})
+  .then(data => setUser(data[0]))
     .then(()=> {  
       onLoggin()});
-
-//onLoggin()
   setLoginForm({
     "email" :'',
     "password" : ''
   })
 }
-
-const requestUser = ()=>{
-  fetch(`http://localhost:3002/users?`)
-}
-
 
 return (
   <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
@@ -78,7 +60,7 @@ return (
         </Segment>
       </Form>
       {/* <Message>
-        New to us? <a href='#'>Sign Up</a>
+        New to us? <Link to='create'>Sign Up </Link>
       </Message> */}
     </Grid.Column>
   </Grid>

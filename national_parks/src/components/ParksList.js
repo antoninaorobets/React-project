@@ -23,7 +23,6 @@ function ParksList({ allParks,user, setUser }) {
     fetch(`http://localhost:3002/parks/?_limit=${pageSize}&_start=${page * pageSize}`)
       .then(resp => resp.json())
       .then(data => {
-        console.log("data fetchd",data)
         setParks([...parks,...data])
         setLoading(false)
         setHasMore(data.length > 0)
@@ -65,6 +64,7 @@ function ParksList({ allParks,user, setUser }) {
       return <ParkCard key={park.id} park={park} user={user} setUser={setUser} />
     }
   })
+
 
   return (
     <div>

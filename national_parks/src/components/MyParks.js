@@ -1,4 +1,5 @@
 import React from 'react'
+import {Navigate} from 'react-router-dom'
 
 import {
     Header,
@@ -9,13 +10,10 @@ import {
 
 
 function MyParks({allParks, user, setUser}) {
-  console.log("user on my page",user)
-  console.log("user on my page",user.parkCodes)
-
-    
     const displayParks =  allParks.filter(park => user.parkCodes.includes(park.parkCode))
     const parksCards = displayParks.map((park, index) => <ParkCard key={park.id} park={park} user={user} setUser={setUser} />)
-  return (
+ 
+    return (
       <div>
           <Container textAlign='center'>
           <Header as='h1' style={{ marginTop: '5em', marginBottom: '1em' }}> My collection</Header>

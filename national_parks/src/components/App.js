@@ -3,7 +3,7 @@ import '../css/App.css';
 import ParksList from "./ParksList"
 import TopMenu from "./TopMenu"
 import BottomMenu from "./Bottommenu"
-import { Route, Routes,useNavigate } from "react-router-dom";
+import { Route, Routes,useNavigate ,Navigate} from "react-router-dom";
 import ParkDetail from './ParkDetail'
 //import parks_data from "../db_test.json"
 import parks_data from "../db.json"
@@ -36,9 +36,12 @@ function App() {
           
         <Routes>
           <Route exact path="/" element={<ParksList allParks={allParks} user={user} setUser={setUser}/>}/>
-          <Route path='/myparks' element={<MyParks allParks={allParks} user={user} setUser={setUser} />} />
+          <Route path='/myparks' element={ (isLoggin)
+            ? <MyParks allParks={allParks} user={user} setUser={setUser} /> 
+            :  <Navigate replace to="/" />  } /> 
           <Route path="/parks/:code" element={<ParkDetail allParks={allParks} />}/>
           <Route path="/login" element={<LoginForm onLoggin={onLoggin} setUser={setUser}/>} />
+          {/* <Route path="/create" element={<LoginForm onLoggin={onLoggin} setUser={setUser}/>} /> */}
         </Routes>
       </UserProvider>
 
