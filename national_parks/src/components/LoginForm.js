@@ -60,7 +60,7 @@ return (
         </Segment>
       </Form>
       <Message>
-        New to us? <NavLink to='create'>Sign Up </NavLink>
+        New to us? <NavLink to='../create'>Sign Up </NavLink>
       </Message>
     </Grid.Column>
   </Grid>

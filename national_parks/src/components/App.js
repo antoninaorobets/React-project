@@ -25,6 +25,7 @@ function App() {
   )
   const navigate = useNavigate()
 
+
   const onLoggin=()=>{
     setIsLoggin(true)
    navigate("/myparks")
@@ -43,6 +44,8 @@ function App() {
           <Route path="/parks/:code" element={<ParkDetail allParks={allParks} />}/>
           <Route path="/login" element={<LoginForm onLoggin={onLoggin} setUser={setUser}/>} />
           <Route path="/create" element={<CreateAccount onLoggin={onLoggin} setUser={setUser}/>} />
+    
+          {/* <Route path="*" element={<Navigate to="/" replace />}/> */}
         </Routes>
       </UserProvider>
 

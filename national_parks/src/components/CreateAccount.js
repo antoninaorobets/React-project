@@ -72,7 +72,7 @@ return (
         </Segment>
       </Form>
       <Message>
-        Has an Account? <Link to='login'>Login </Link>
+        Has an Account? <Link to='../login'>Login </Link>
       </Message>
     </Grid.Column>
   </Grid>
