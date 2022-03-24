@@ -1,9 +1,10 @@
+
 import React,{ useState, useContext} from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import { Button, Form, Grid, Header, Image, Segment, Message } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { Button, Form, Grid, Header, Image, Segment,Message } from 'semantic-ui-react'
 
 
-function LoginForm ({onLoggin, setUser}) {
+function CreateAccount ({onLoggin, setUser}) {
 const [loginForm, setLoginForm] = useState({
   "email" :'',
   "password" : ''
@@ -18,11 +19,22 @@ const handleChange = (e) => {
 }
 const handleSubmit = (e)=>{
   e.preventDefault()
-  fetch(`http://localhost:3002/users?` + new URLSearchParams({
-      email: loginForm.email,
-  }))
+  const data = {
+    "email" :loginForm.email,
+    "password" : loginForm.password,
+    "parkCodes" : []
+  }
+  fetch(`http://localhost:3002/users`,{
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+  })
   .then(response => response.json())
-  .then(data => setUser(data[0]))
+  .then(data => {
+    console.log(data)  
+    setUser(data)})
     .then(()=> {  
       onLoggin()});
   setLoginForm({
@@ -35,7 +47,7 @@ return (
   <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
     <Grid.Column style={{ maxWidth: 450 }}>
       <Header as='h2' color='###' textAlign='center'>
-        <Image src='https://www.cityhs.net/ImageRepository/Document?documentID=10654' /> Log-in to your account
+        <Image src='https://www.cityhs.net/ImageRepository/Document?documentID=10654' /> Create new account
       </Header>
       <Form size='large'
       onSubmit={handleSubmit}>
@@ -55,15 +67,16 @@ return (
             onChange={handleChange}
           />
           <Button color='###' fluid size='large'>
-            Login
+            Register
           </Button>
         </Segment>
       </Form>
       <Message>
-        New to us? <NavLink to='create'>Sign Up </NavLink>
+        Has an Account? <Link to='login'>Login </Link>
       </Message>
     </Grid.Column>
   </Grid>
 )}
 
-export default LoginForm
+
+export default CreateAccount

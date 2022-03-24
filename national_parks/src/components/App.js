@@ -10,6 +10,7 @@ import parks_data from "../db.json"
 import LoginForm from "./LoginForm";
 import MyParks from "./MyParks";
 import {UserProvider} from "../context/user"
+import CreateAccount from "./CreateAccount"
 
 
 function App() {
@@ -41,7 +42,7 @@ function App() {
             :  <Navigate replace to="/" />  } /> 
           <Route path="/parks/:code" element={<ParkDetail allParks={allParks} />}/>
           <Route path="/login" element={<LoginForm onLoggin={onLoggin} setUser={setUser}/>} />
-          {/* <Route path="/create" element={<LoginForm onLoggin={onLoggin} setUser={setUser}/>} /> */}
+          <Route path="/create" element={<CreateAccount onLoggin={onLoggin} setUser={setUser}/>} />
         </Routes>
       </UserProvider>
 
