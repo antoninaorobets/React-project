@@ -7,7 +7,8 @@ import {
   Search,
 } from 'semantic-ui-react'
 
-function TopMenu({ isLoggin }) {
+function TopMenu({ isLoggin,onLogout }) {
+ 
   return (
     <div>
       <Menu fixed='top' inverted>
@@ -24,11 +25,13 @@ function TopMenu({ isLoggin }) {
           style={{ 'alignItems': 'center', 'display': 'flex' }}
           fluid
         />
-{/* How to fix size of click area */}      
-        <Menu.Item as='a' position='right' display="flex" style={{ 'alignItems': 'center' }}>
-          { (isLoggin) ? <div>Logout</div>:
-            <NavLink to="/login" style={{margin: "13px 16px"}} >Login</NavLink>}
-        </Menu.Item>
+{/* How to fix size of click area */}   
+      {(isLoggin) 
+          ? <Menu.Item onClick={onLogout} as='a' position='right' display="flex" style={{'alignItems':'center',"width":"100px" }}>
+            <div style={{ margin: "13px 16px" }}>Logout</div></Menu.Item>
+          : <Menu.Item as='a' position='right' display="flex" style={{ 'alignItems':'center',"width":"100px" }}>
+            <NavLink to="/login" style={{ margin: "13px 16px" }} >Login</NavLink>
+          </Menu.Item>}
       </Menu>
     </div>
   )

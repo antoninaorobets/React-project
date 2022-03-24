@@ -34,7 +34,13 @@ Project requirements:
 
 4. Use a json-server to create a RESTful API for your backend and make both a GET and a POST request to the json server. 
         GET: get information about parks
-        POST: save favorit parks for user
+        POST: create user record
+        PATCH: save favorit parks for user
+
+To do:
+- add context
+- logout
+- 
 
 
 UI:

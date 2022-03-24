@@ -16,13 +16,7 @@ import CreateAccount from "./CreateAccount"
 function App() {
   const allParks = parks_data.parks
   const [isLoggin, setIsLoggin] = useState(false)
-  const [user,setUser] = useState(
-    // {
-    //   id: "2",
-    //   email: "xxx",
-    //   parkCodes: ["afbg","abli"],
-    // }
-  )
+  const [user,setUser] = useState()
   const navigate = useNavigate()
 
 
@@ -31,10 +25,17 @@ function App() {
    navigate("/myparks")
   }
 
+  const onLogout = ()=>{
+    navigate("/")
+    setIsLoggin(false)
+    setUser()
+   
+  }
+
   return (
     <div className="App">
       <UserProvider>
-        <TopMenu isLoggin={isLoggin} />
+        <TopMenu isLoggin={isLoggin} onLogout={onLogout} />
           
         <Routes>
           <Route exact path="/" element={<ParksList allParks={allParks} user={user} setUser={setUser}/>}/>
