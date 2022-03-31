@@ -43,6 +43,9 @@ To do:
 - 
 
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/cd11f17c-7bc0-4a0f-9b9e-dc517463acca/deploy-status)](https://app.netlify.com/sites/symphonious-biscochitos-083c96/deploys)
+
+
 UI:
 https://react.semantic-ui.com/usage/
 
