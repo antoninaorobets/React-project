@@ -24,7 +24,7 @@ const handleSubmit = (e)=>{
     "password" : loginForm.password,
     "parkCodes" : []
   }
-  fetch(`http://localhost:3002/users`,{
+  fetch(`https://nationalparks-db.herokuapp.com/users`,{
       method: "POST",
       headers: {
         'Content-Type': 'application/json'

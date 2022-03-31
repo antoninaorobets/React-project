@@ -20,7 +20,7 @@ function ParksList({ allParks,user, setUser }) {
   
   useEffect(() => {
     setLoading(true)
-    fetch(`http://localhost:3002/parks/?_limit=${pageSize}&_start=${page * pageSize}`)
+    fetch(`https://nationalparks-db.herokuapp.com/parks/?_limit=${pageSize}&_start=${page * pageSize}`)
       .then(resp => resp.json())
       .then(data => {
         setParks([...parks,...data])
@@ -37,7 +37,7 @@ function ParksList({ allParks,user, setUser }) {
     }
     else {
       setPage(0)
-      fetch(`http://localhost:3000/parks/?_limit=${pageSize}`)
+      fetch(`https://nationalparks-db.herokuapp.com/parks/?_limit=${pageSize}`)
       .then(resp => resp.json())
       .then(data => {
         setParks(data)

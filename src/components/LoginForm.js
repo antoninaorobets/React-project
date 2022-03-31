@@ -1,5 +1,5 @@
 import React,{ useState, useContext} from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { Button, Form, Grid, Header, Image, Segment, Message } from 'semantic-ui-react'
 
 
@@ -18,7 +18,7 @@ const handleChange = (e) => {
 }
 const handleSubmit = (e)=>{
   e.preventDefault()
-  fetch(`http://localhost:3002/users?` + new URLSearchParams({
+  fetch(`https://nationalparks-db.herokuapp.com/users?` + new URLSearchParams({
       email: loginForm.email,
   }))
   .then(response => response.json())

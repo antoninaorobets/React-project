@@ -6,6 +6,7 @@ import { Link } from "react-router-dom"
 
 function ParkCard({ park,user,setUser }) {
 
+
     let parkCodes
 
      (user) ?  parkCodes = user.parkCodes  : parkCodes = []
@@ -19,7 +20,7 @@ function ParkCard({ park,user,setUser }) {
             "parkCodes" : [...parkCodes,park.parkCode]
         }
       //  setUser(data)
-            fetch(`http://localhost:3002/users/${id}`,{
+            fetch(`https://nationalparks-db.herokuapp.com/users/${id}`,{
                 method: "PATCH",
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(data)
@@ -56,23 +57,3 @@ function ParkCard({ park,user,setUser }) {
 }
 
 export default ParkCard
-
-
-{/* <div className="ui card">
-<div className="image" >
-    <img style={imgStyle} src={park.images[0].url} />
-</div>
-<div className="content">
-    <a className="header">{park.name}</a>
-    <div className="meta">
-        <span className="date">{park.addresses[0].city}, {park.addresses[0].stateCode}</span>
-    </div>
-    <div className="description">
-        {park.description}
-    </div>
-</div>
-<div className="extra content">
-    <div className="ui star rating" data-rating="3"></div>
-</div>
-</div>
-) */}
